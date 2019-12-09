@@ -25,6 +25,10 @@ SidebarPreviewPageEntry::~SidebarPreviewPageEntry() = default;
 auto SidebarPreviewPageEntry::getRenderType() -> PreviewRenderType { return RENDER_TYPE_PAGE_PREVIEW; }
 
 void SidebarPreviewPageEntry::mouseButtonPressCallback() {
-    sidebar->getControl()->getScrollHandler()->scrollToPage(page);
-    sidebar->getControl()->firePageSelected(page);
+    const auto oldPageId = this->sidebar->getSelectedEntry();
+    const auto newPageId = this->sidebar->getControl()->firePageSelected(this->page);
+    // For better UX: don't scroll if clicked page is already selected
+    if (oldPageId != newPageId) {
+        this->sidebar->getControl()->getScrollHandler()->scrollToPage(this->page);
+    }
 }

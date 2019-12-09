@@ -130,3 +130,5 @@ auto SidebarPreviewBase::scrollToPreview(SidebarPreviewBase* sidebar) -> bool {
 void SidebarPreviewBase::pageDeleted(int page) {}
 
 void SidebarPreviewBase::pageInserted(int page) {}
+
+size_t SidebarPreviewBase::getSelectedEntry() { return this->selectedEntry; }
