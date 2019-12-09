@@ -14,6 +14,10 @@ SidebarPreviewPageEntry::SidebarPreviewPageEntry(SidebarPreviewPages* sidebar, c
                 self->sidebar->openPreviewContextMenu();
                 return true;
             }
+        } else if (event->type == GDK_2BUTTON_PRESS) {
+            // Scroll to page top
+            self->sidebar->getControl()->getScrollHandler()->scrollToPage(self->page);
+            return true;
         }
         return false;
     });
