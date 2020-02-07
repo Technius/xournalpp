@@ -320,11 +320,11 @@ auto XournalMain::run(int argc, char* argv[]) -> int {
     auto* control = new Control(gladePath);
 
     if (control->getSettings()->isDarkTheme()) {
-        string icon = gladePath->getFirstSearchPath() + "/iconsDark/";
+        string icon = gladePath->getFirstSearchPath() + "/iconsColor/";
         gtk_icon_theme_prepend_search_path(gtk_icon_theme_get_default(), icon.c_str());
     }
 
-    string icon = gladePath->getFirstSearchPath() + "/icons/";
+    string icon = gladePath->getFirstSearchPath() + "/iconsMono/";
     gtk_icon_theme_prepend_search_path(gtk_icon_theme_get_default(), icon.c_str());
 
     auto* win = new MainWindow(gladePath, control);
