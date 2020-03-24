@@ -36,6 +36,7 @@ XournalWidget::XournalWidget(XournalView* view, ScrollHandling* scrollHandling):
 
 auto XournalWidget::init() -> void {
     this->drawingArea = gtk_drawing_area_new();
+    gtk_widget_set_can_focus(GTK_WIDGET(this->drawingArea), true);
     gtk_widget_set_hexpand(this->drawingArea, true);
     gtk_widget_set_vexpand(this->drawingArea, true);
     g_signal_connect(G_OBJECT(drawingArea), "size-allocate", G_CALLBACK(XournalWidget::sizeAllocateCallback), this);
