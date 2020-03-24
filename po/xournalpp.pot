@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xournalpp 1.1.0+dev\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-09 00:42+0000\n"
+"POT-Creation-Date: 2020-03-22 18:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Color \"{1}\" unknown (not defined in default color list)!"
 msgstr ""
 
-#: ../src/gui/sidebar/indextree/SidebarIndexPage.cpp:225
+#: ../src/gui/sidebar/indextree/SidebarIndexPage.cpp:226
 msgid "Contents"
 msgstr ""
 
@@ -738,8 +738,8 @@ msgstr ""
 msgid "No device"
 msgstr ""
 
-#: ../src/pdf/base/XojCairoPdfExport.cpp:67
-#: ../src/pdf/base/XojCairoPdfExport.cpp:105
+#: ../src/pdf/base/XojCairoPdfExport.cpp:117
+#: ../src/pdf/base/XojCairoPdfExport.cpp:155
 msgid "No pages to export!"
 msgstr ""
 
@@ -1349,7 +1349,7 @@ msgid ""
 "issue tracker."
 msgstr ""
 
-#: ../src/gui/sidebar/indextree/SidebarIndexPage.cpp:76
+#: ../src/gui/sidebar/indextree/SidebarIndexPage.cpp:77
 msgid ""
 "Your current document does not contain PDF Page no {1}\n"
 "Would you like to insert this page?\n"
@@ -2239,6 +2239,10 @@ msgstr ""
 msgid "Mouse Buttons"
 msgstr ""
 
+#: ../ui/settingsDeviceClassConfig.glade:43
+msgid "Mouse+Keyboard Combo"
+msgstr ""
+
 #: ../ui/main.glade:2562
 msgid "Move Down"
 msgstr ""
@@ -2527,7 +2531,7 @@ msgid "Timeout"
 msgstr ""
 
 #: ../ui/settings.glade:1420 ../ui/settings.glade:1889
-#: ../ui/settingsDeviceClassConfig.glade:45
+#: ../ui/settingsDeviceClassConfig.glade:46
 msgid "Touchscreen"
 msgstr ""
 
