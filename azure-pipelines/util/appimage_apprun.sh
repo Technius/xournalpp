@@ -4,8 +4,10 @@
 
 export APPDIR=${APPDIR:-$(readlink -f $(dirname "$0"))}
 export PATH="$APPDIR"/usr/bin/:"$PATH"
-export XDG_DATA_DIRS="$APPDIR"/usr/share:"$XDG_DATA_DIRS"
+export XDG_DATA_DIRS="$APPDIR"/usr/share/:"$XDG_DATA_DIRS"
 
+export GTK_PATH="$APPDIR"/usr/lib/gtk-3.0/modules/
+export GTK_EXE_PREFIX="$APPDIR"/usr
 export GDK_PIXBUF_MODULEDIR="$APPDIR"/usr/lib/gdk-pixbuf-2.0/loaders
 export GDK_PIXBUF_MODULE_FILE="$APPDIR"/usr/lib/gdk-pixbuf-2.0/loaders.cache
 export GTK_PATH="$APPDIR"/usr/lib/gtk-3.0

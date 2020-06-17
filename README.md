@@ -242,6 +242,15 @@ The latest stable release is available in the main repository:
 sudo eopkg it xournalpp
 ```
 
+### AppImage
+
+The Xournal++ team provides an official AppImage build (see the release page)
+compatible with systems newer than or released around the same time as Ubuntu
+18.04.
+
+Due to compatibility problems with audio libraries, the AppImage requires ALSA,
+libasound, and a Jack audio server to be installed.
+
 ### Flatpak
 
 The Xournal++ team officially supports a [FlatHub
