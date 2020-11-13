@@ -19,6 +19,17 @@
 #include "Rectangle.h"
 #include "Util.h"
 
+#ifdef DEBUG_RENDER_PROFILING
+#include <chrono>
+#include <deque>
+#include <iostream>
+static std::chrono::time_point<std::chrono::system_clock> _dbg_lastRender;
+static constexpr double _dbg_frameEmaAlpha = 0.9;
+static constexpr size_t _dbg_samples = 100;
+static double _dbg_frameEma = 1.0;
+static size_t _dbg_frameSampleCount = 0;
+#endif
+
 static void gtk_xournal_class_init(GtkXournalClass* klass);
 static void gtk_xournal_init(GtkXournal* xournal);
 static void gtk_xournal_get_preferred_width(GtkWidget* widget, gint* minimal_width, gint* natural_width);
@@ -318,6 +329,23 @@ static auto gtk_xournal_draw(GtkWidget* widget, cairo_t* cr) -> gboolean {
 
         xournal->selection->paint(cr, zoom);
     }
+
+#ifdef DEBUG_RENDER_PROFILING
+    {
+        auto renderFin = std::chrono::system_clock::now();
+        std::chrono::duration<double> frameTime = renderFin - _dbg_lastRender;
+        _dbg_lastRender = renderFin;
+        _dbg_frameEma =
+                _dbg_frameEmaAlpha * _dbg_frameEma +
+                (1.0 - _dbg_frameEmaAlpha) * std::chrono::duration_cast<std::chrono::milliseconds>(frameTime).count();
+        _dbg_frameSampleCount = (_dbg_frameSampleCount + 1) % _dbg_samples;
+        if (_dbg_frameSampleCount == 0) {
+            std::cout << "FPS: " << 1000.0 / _dbg_frameEma << " Last: " << frameTime.count() << std::endl;
+        }
+
+        gtk_widget_queue_draw(widget);
+    }
+#endif
 
     return true;
 }

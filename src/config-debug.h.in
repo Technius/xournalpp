@@ -42,3 +42,8 @@
  * Draw a border around all painted rects
  */
 #cmakedefine DEBUG_SHOW_PAINT_BOUNDS
+
+/**
+ * Enable rendering instrumentation
+ */
+#cmakedefine DEBUG_RENDER_PROFILING

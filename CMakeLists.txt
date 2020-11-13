@@ -197,8 +197,9 @@ option (DEBUG_SHEDULER "Scheduler debug: show jobs etc" OFF)
 option (DEBUG_SHOW_ELEMENT_BOUNDS "Draw a surrounding border to all elements" OFF)
 option (DEBUG_SHOW_REPAINT_BOUNDS "Draw a border around all repaint rects" OFF)
 option (DEBUG_SHOW_PAINT_BOUNDS "Draw a border around all painted rects" OFF)
+option (DEBUG_RENDER_PROFILING "Display render profiling information" OFF)
 mark_as_advanced (FORCE
-		DEBUG_INPUT DEBUG_RECOGNIZER DEBUG_SHEDULER DEBUG_SHOW_ELEMENT_BOUNDS DEBUG_SHOW_REPAINT_BOUNDS DEBUG_SHOW_PAINT_BOUNDS
+  DEBUG_INPUT DEBUG_RECOGNIZER DEBUG_SHEDULER DEBUG_SHOW_ELEMENT_BOUNDS DEBUG_SHOW_REPAINT_BOUNDS DEBUG_SHOW_PAINT_BOUNDS DEBUG_RENDER_PROFILING
 )
 
 # Advanced development config

@@ -26,7 +26,8 @@
 
 XournalView::XournalView(GtkWidget* parent, Control* control, ScrollHandling* scrollHandling):
         scrollHandling(scrollHandling), control(control) {
-    this->cache = new PdfCache(control->getSettings()->getPdfPageCacheSize());
+    this->cache =
+            std::make_unique<PdfCache>(control->getSettings()->getPdfPageCacheSize(), gtk_widget_get_window(parent));
     registerListener(control);
 
     InputContext* inputContext = nullptr;
@@ -65,8 +66,6 @@ XournalView::~XournalView() {
     }
     viewPages.clear();
 
-    delete this->cache;
-    this->cache = nullptr;
     delete this->repaintHandler;
     this->repaintHandler = nullptr;
 
@@ -556,7 +555,7 @@ void XournalView::resetShapeRecognizer() {
     }
 }
 
-auto XournalView::getCache() -> PdfCache* { return this->cache; }
+auto XournalView::getCache() -> PdfCache* { return this->cache.get(); }
 
 void XournalView::pageInserted(size_t page) {
     Document* doc = control->getDocument();

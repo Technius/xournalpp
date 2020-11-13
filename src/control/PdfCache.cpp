@@ -15,11 +15,17 @@ public:
         cairo_surface_destroy(this->rendered);
         this->rendered = nullptr;
     }
+
+    PdfCacheEntry(const PdfCacheEntry& cache) = delete;
+    void operator=(const PdfCacheEntry& cache) = delete;
+    PdfCacheEntry(const PdfCacheEntry&& cache) = delete;
+    void operator=(const PdfCacheEntry&& cache) = delete;
+
     XojPdfPageSPtr popplerPage;
     cairo_surface_t* rendered;
 };
 
-PdfCache::PdfCache(int size) {
+PdfCache::PdfCache(int size, GdkWindow* window): window(window) {
     this->size = size;
 
     g_mutex_init(&this->renderMutex);
@@ -72,9 +78,17 @@ void PdfCache::render(cairo_t* cr, const XojPdfPageSPtr& popplerPage, double zoo
     this->setZoom(zoom);
 
     cairo_surface_t* img = lookup(popplerPage);
+    auto surfaceWidth = static_cast<int>(popplerPage->getWidth() * this->zoom);
+    auto surfaceHeight = static_cast<int>(popplerPage->getHeight() * this->zoom);
     if (img == nullptr) {
-        img = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, popplerPage->getWidth() * this->zoom,
-                                         popplerPage->getHeight() * this->zoom);
+        if (this->window) {
+            // img = gdk_window_create_similar_image_surface(this->window, CAIRO_FORMAT_ARGB32, surfaceWidth,
+            // surfaceHeight, 0);
+            img = gdk_window_create_similar_surface(this->window, CAIRO_CONTENT_COLOR_ALPHA, surfaceWidth,
+                                                    surfaceHeight);
+        } else {
+            img = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, surfaceWidth, surfaceHeight);
+        }
         cairo_t* cr2 = cairo_create(img);
 
         cairo_scale(cr2, this->zoom, this->zoom);

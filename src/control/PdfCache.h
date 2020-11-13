@@ -16,6 +16,7 @@
 #include <vector>
 
 #include <cairo/cairo.h>
+#include <gdk/gdk.h>
 
 #include "pdf/base/XojPdfPage.h"
 
@@ -26,12 +27,14 @@ class PdfCacheEntry;
 
 class PdfCache {
 public:
-    PdfCache(int size);
+    PdfCache(int size, GdkWindow* window);
     virtual ~PdfCache();
 
 private:
-    PdfCache(const PdfCache& cache);
-    void operator=(const PdfCache& cache);
+    PdfCache(const PdfCache& cache) = delete;
+    void operator=(const PdfCache& cache) = delete;
+    PdfCache(const PdfCache&& cache) = delete;
+    void operator=(const PdfCache&& cache) = delete;
 
 public:
     void render(cairo_t* cr, const XojPdfPageSPtr& popplerPage, double zoom);
@@ -47,6 +50,7 @@ private:
 
     list<PdfCacheEntry*> data;
     list<PdfCacheEntry*>::size_type size = 0;
+    GdkWindow* window = nullptr;  // only needed for faster rendering path
 
     double zoom = -1;
 };

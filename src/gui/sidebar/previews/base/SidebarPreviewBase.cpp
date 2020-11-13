@@ -11,7 +11,8 @@ SidebarPreviewBase::SidebarPreviewBase(Control* control, GladeGui* gui, SidebarT
         AbstractSidebarPage(control, toolbar) {
     this->layoutmanager = new SidebarLayout();
 
-    this->cache = new PdfCache(control->getSettings()->getPdfPageCacheSize());
+    this->cache = std::make_unique<PdfCache>(control->getSettings()->getPdfPageCacheSize(),
+                                             gtk_widget_get_window(GTK_WIDGET(control->getGtkWindow())));
 
     this->iconViewPreview = gtk_layout_new(nullptr, nullptr);
     g_object_ref(this->iconViewPreview);
@@ -40,9 +41,6 @@ SidebarPreviewBase::SidebarPreviewBase(Control* control, GladeGui* gui, SidebarT
 SidebarPreviewBase::~SidebarPreviewBase() {
     gtk_widget_destroy(this->iconViewPreview);
     this->iconViewPreview = nullptr;
-
-    delete this->cache;
-    this->cache = nullptr;
 
     delete this->layoutmanager;
     this->layoutmanager = nullptr;
@@ -74,7 +72,7 @@ void SidebarPreviewBase::sizeChanged(GtkWidget* widget, GtkAllocation* allocatio
 
 auto SidebarPreviewBase::getZoom() const -> double { return this->zoom; }
 
-auto SidebarPreviewBase::getCache() -> PdfCache* { return this->cache; }
+auto SidebarPreviewBase::getCache() -> PdfCache* { return this->cache.get(); }
 
 void SidebarPreviewBase::layout() { SidebarLayout::layout(this); }
 
