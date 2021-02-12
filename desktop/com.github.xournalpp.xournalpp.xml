@@ -2,15 +2,42 @@
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 	<mime-type type="application/x-xojpp">
 		<comment>Xournal note file</comment>
+        <comment xml:lang="ca">Fitxers de nota del Xournal</comment>
+        <comment xml:lang="cs">Poznámky Xournalu</comment>
+        <comment xml:lang="de">Xournal Dokument</comment>
+        <comment xml:lang="fr">Fichier Xournal</comment>
+        <comment xml:lang="pl">Notatnik Xournala</comment>
+        <comment xml:lang="zh_CN">Xournal 笔记文件</comment>
+        <comment xml:lang="ru">Файл заметок Xournal</comment>
+        <icon name="application-x-xojpp" />
 		<glob pattern="*.xoj"/>
+        <sub-class-of type="application/gzip" />
 	</mime-type>
 	<mime-type type="application/x-xopp">
 		<comment>Xournal++ note file</comment>
+        <comment xml:lang="ca">Fitxers de nota del Xournal++</comment>
+        <comment xml:lang="cs">Poznámky Xournalu++</comment>
+        <comment xml:lang="de">Xournal++ Dokument</comment>
+        <comment xml:lang="fr">Fichier Xournal++</comment>
+        <comment xml:lang="pl">Notatnik Xournala++</comment>
+        <comment xml:lang="zh_CN">Xournal++ 笔记文件</comment>
+        <comment xml:lang="ru">Файл заметок Xournal++</comment>
+        <icon name="application-x-xopp" />
 		<glob pattern="*.xopp"/>
+        <sub-class-of type="application/gzip" />
 	</mime-type>
 	<mime-type type="application/x-xopt">
-		<comment>Xournal++ note file</comment>
+		<comment>Xournal++ template file</comment>
+        <comment xml:lang="de">Xournal++ Vorlage</comment>
+        <comment xml:lang="zh_CN">Xournal++ 模板文件</comment>
+        <comment xml:lang="ru">Файл шаблона Xournal++</comment>
+        <icon name="application-x-xopt" />
 		<glob pattern="*.xopt"/>
+        <sub-class-of type="application/gzip" />
 	</mime-type>
+
+    <mime-type type="application/pdf" >
+        <glob weight="40" pattern="*.pdf" />
+    </mime-type>
 </mime-info>
 

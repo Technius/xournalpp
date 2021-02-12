@@ -296,16 +296,10 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 	install(FILES ui/pixmaps/gnome-mime-application-x-xopt.svg
 			DESTINATION share/icons/hicolor/scalable/mimetypes/)
 
-	install(FILES desktop/com.github.xournalpp.xournalpp.xml
-			DESTINATION share/mime/packages)
 	install(FILES desktop/com.github.xournalpp.xournalpp.desktop
-			DESTINATION share/applications)
-	install(FILES desktop/x-xojpp.desktop
-			DESTINATION share/mimelnk/application)
-	install(FILES desktop/x-xopp.desktop
-			DESTINATION share/mimelnk/application)
-	install(FILES desktop/x-xopt.desktop
-			DESTINATION share/mimelnk/application)
+			DESTINATION share/applications/)
+	install(FILES desktop/com.github.xournalpp.xournalpp.xml
+			DESTINATION share/mime/packages/)
 
 	install(FILES desktop/com.github.xournalpp.xournalpp.thumbnailer
 			DESTINATION share/thumbnailers)
